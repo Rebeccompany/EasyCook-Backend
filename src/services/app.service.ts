@@ -26,8 +26,7 @@ export class AppService {
     //knex.select('*').from('users').leftJoin('accounts', 'users.id', 'accounts.user_id')
     let recipeRaw = await knex<RecipeRaw>('Recipe').select('*')
     let promices = recipeRaw.map(this.createRecipeFromRawRecipe)
-    let recipes: Recipe[] = await Promise.all(promices) 
-
+    let recipes: Recipe[] = await Promise.all(promices)
     return recipes
   }
 
@@ -39,7 +38,7 @@ export class AppService {
     }
   }
 
-  async createRecipe(recipe: RecipeDTO) {
+  async createRecipe(recipe: any) {
     let addedRecipe = await this.addRecipeToDatabase(recipe)
     let ingredientDTOs: IngredientDTO[] = recipe.ingredients.map( data => {
       return {
@@ -60,7 +59,7 @@ export class AppService {
     return addedIngredient[0]
   }
 
-  private async addRecipeToDatabase(recipe: RecipeDTO): Promise<Recipe> {
+  private async addRecipeToDatabase(recipe: any): Promise<Recipe> {
     let addedRecipe: Recipe[] = await knex('Recipe')
     .insert({
       title: recipe.title,

@@ -17,7 +17,7 @@ export class AppController {
   }
 
   @Post('addRecipe')
-  async addAnRecipe(@Body() recipe: RecipeDTO) {
+  async addAnRecipe(@Body() recipe: any) {
     this.appService.createRecipe(recipe)
   }
 }
