@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from '../services/app.service';
+import { RecipeDTO } from 'src/models/Recipe';
 
 describe('AppController', () => {
   let appController: AppController;
@@ -27,19 +28,26 @@ describe('AppController', () => {
       let beforeLenght = before.length
 
       let r = {
-        "title": "batata",
-        "preparation_method": "teste123",
-        "preparation_time": 3,
-        "portion": 5,
-        "_id": 1,
+        "title": ["TIto Taus"],
+        "preparation_method": "adicione a Jessie na panela com 3 pitadas de amor e 1 pitada de sal, depois vá atrás das meninas super poderosas e jogue dominó",
+        "preparation_time": 180,
+        "portions": 1,
         "ingredients": [
           {
-            "name": "batata doce",
-            "quantity": 10
+            "name": ["Jessie"],
+            "quantity": 1
           },
           {
-            "name": "batata palha",
-            "quantity": 5
+            "name": ["Docinho"],
+            "quantity": 1
+          },
+          {
+            "name": ["Lindinha"],
+            "quantity": 1
+          },
+          {
+            "name": ["Florzinho"],
+            "quantity": 1
           }
         ]
       }
