@@ -35,15 +35,11 @@ describe('AppController', () => {
         "ingredients": [
           {
             "name": "batata doce",
-            "quantity": 10,
-            "id": 0,
-            "recipe_id": 3
+            "quantity": 10
           },
           {
             "name": "batata palha",
-            "quantity": 5,
-            "id": 1,
-            "recipe_id": 6
+            "quantity": 5
           }
         ]
       }

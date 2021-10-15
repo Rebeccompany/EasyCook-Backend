@@ -1,8 +1,6 @@
 interface Ingredient {
     name: string
     quantity: number
-    id: number
-    recipe_id: number
 }
 
 export class Recipe {
