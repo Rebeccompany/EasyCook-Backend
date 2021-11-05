@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Recipe, RecipeDTO, RecipeRaw } from '../models/Recipe';
 import { Knex } from 'knex';
 import { Ingredient, IngredientDTO } from 'src/models/Ingredient';
+import { recipeModel } from '../models/recipeSchema'
 
 const knex: Knex = require('knex')({
   client: 'postgresql',
@@ -17,8 +18,20 @@ const knex: Knex = require('knex')({
 @Injectable()
 export class AppService {
 
+  
+
   async getHello(): Promise<string> {
-    let user = await knex.table('Recipe').select('*')
+    const recipe = await recipeModel()
+
+    recipe.create({title: "string",
+      preparation_method: "string",
+      preparation_time: 2,
+      portions: 2,
+      ingredients: [{
+          name: "string",
+          quantity: 2
+      }]})
+
     return 'Hello World!';
   }
 
@@ -70,5 +83,18 @@ export class AppService {
     .returning('*')
 
     return addedRecipe[0]
+  }
+
+  async login(login: string, password: string): Promise<any> {
+    let data = await knex("User")
+    .select("*")
+    .where('login', login)
+    .andWhere('password', password)
+
+    if (data.length == 0) {
+      return false
+    } else {
+      return true
+    }
   }
 }

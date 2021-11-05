@@ -20,4 +20,10 @@ export class AppController {
   async addAnRecipe(@Body() recipe: any) {
     this.appService.createRecipe(recipe)
   }
+
+  @Post('login')
+  async login(@Body() loginData: {login: string, password: string}): Promise<boolean> {
+    console.log(loginData)
+    return await this.appService.login(loginData.login, loginData.password)
+  }
 }

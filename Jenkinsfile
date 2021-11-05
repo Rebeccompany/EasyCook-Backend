@@ -1,12 +1,26 @@
 pipeline {
   agent any
+    
+  tools {nodejs "Default"}
+    
   stages {
-    stage('build') {
+        
+    stage('Cloning Git') {
       steps {
-        nodejs 'Default'
+        git 'https://github.com/Rebeccompany/EasyCook-Backend'
+      }
+    }
+        
+    stage('Install dependencies') {
+      steps {
         sh 'npm install'
       }
     }
-
+     
+    stage('Test') {
+      steps {
+         sh 'npm test'
+      }
+    }      
   }
 }
